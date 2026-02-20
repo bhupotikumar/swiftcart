@@ -1,6 +1,6 @@
 // Function to load external HTML into a div
 const loadHTML = (id, url) => {
-    fetch(url)
+    return fetch(url)
         .then(res => res.text())
         .then(html => {
             document.getElementById(id).innerHTML = html;
@@ -9,8 +9,28 @@ const loadHTML = (id, url) => {
 };
 
 // Load header and footer
-loadHTML("header", "../components/header.html");
+loadHTML("header", "../components/header.html").then(() => {
+    setActiveNav();
+});
 loadHTML("footer", "../components/footer.html");
+
+// Function to highlight active nav link
+const setActiveNav = () => {
+    const currentPath = window.location.pathname.split('/').pop(); // e.g. "products.html"
+    const navLinks = document.querySelectorAll('.navbar a[href]');
+
+    navLinks.forEach(link => {
+        const linkPath = link.getAttribute('href').split('/').pop();
+
+        if (linkPath === currentPath || (linkPath === 'index.html' && currentPath === '')) {
+            link.classList.add('text-indigo-600', 'font-bold'); // active style
+        } else {
+            link.classList.remove('text-indigo-600', 'font-bold');
+        }
+    });
+};
+
+
 
 // Function to load categories from API and display them
 const loadCategories = () => {
