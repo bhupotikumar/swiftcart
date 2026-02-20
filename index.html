@@ -102,14 +102,27 @@
             <div id="trending-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 <!-- Trending products will be loaded here -->
             </div>
+            <!-- Modal -->
+            <dialog id="my_modal_3" class="modal">
+                <div class="modal-box">
+                    <form method="dialog">
+                        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                    </form>
+                    <div id="modal-content" class="p-4">
+                        <!-- Dynamic product info will be injected here -->
+                    </div>
+                </div>
+            </dialog>
         </section>
     </main>
 
     <footer id="footer"></footer>
-
 
     <!-- Scripts -->
     <script src="./scripts/main.js"></script>
 </body>
 
 </html>
+
+
+<!-- You can open the modal using ID.showModal() method -->

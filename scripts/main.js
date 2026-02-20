@@ -81,6 +81,7 @@ const displayProducts = (products) => {
     const productsContainer = document.getElementById('products-container');
     if (!productsContainer) return;
     productsContainer.innerHTML = '';
+
     products.map(product => {
         const productElement = document.createElement('div');
         productElement.innerHTML = `
@@ -98,12 +99,17 @@ const displayProducts = (products) => {
                     </h2>
                     <p class="text-xl font-bold">$${product.price}</p>
                     <div class="card-actions justify-between">
-                        <button class="btn btn-outline btn-primary"><i class="fa-regular fa-eye"></i>Details</button>
+                        <button 
+                        class="details-btn btn btn-outline btn-primary"
+                        ><i class="fa-regular fa-eye"></i>Details</button>
                         <button class="btn btn-outline btn-primary"><i
                                 class="fa-solid fa-cart-arrow-down"></i>Add</button>
                     </div>
                 </div>
             </div>`;
+        productElement.querySelector('.details-btn').addEventListener('click', () => {
+            showProductDetails(product);
+        });
         productsContainer.appendChild(productElement);
     });
 }
@@ -137,13 +143,48 @@ const displayTrendingProducts = (products) => {
                     </h2>
                     <p class="text-xl font-bold">$${product.price}</p>
                     <div class="card-actions justify-between">
-                        <button class="btn btn-outline btn-primary"><i class="fa-regular fa-eye"></i>Details</button>
+                        <button 
+                        class="details-btn btn btn-outline btn-primary"><i class="fa-regular fa-eye"></i>Details</button>
                         <button class="btn btn-outline btn-primary"><i
                                 class="fa-solid fa-cart-arrow-down"></i>Add</button>
                     </div>
                 </div>
             </div>`;
+        productElement.querySelector('.details-btn').addEventListener('click', () => {
+            showProductDetails(product);
+        });
         trendingContainer.appendChild(productElement);
     });
 }
 loadTrendingProducts();
+
+
+// Modal functionality
+const showProductDetails = (product) => {
+    const modal = document.getElementById('my_modal_3');
+    const modalContent = document.getElementById('modal-content');
+    modalContent.innerHTML = `
+        <div class="card bg-base-100 w-full shadow-lg">
+            <figure class="h-64 w-full p-4 bg-gray-300">
+                <img class="h-full w-full object-contain" src="${product.image}" alt="${product.title}" />
+            </figure>
+            <div class="card-body p-2">
+                <div class="flex justify-between my-4">
+                    <div class="badge text-indigo-600 bg-indigo-100">${product.category}</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-star text-yellow-500"></i><span>${product.rating.rate} (${product.rating.count})</span></div>
+                </div>
+                <h2 class="text-xl font-semibold">
+                    ${product.title}
+                </h2>
+                <p class="text-xl font-bold">$${product.price}</p>
+                <div class="card-actions justify-between">
+                    <button
+                    class="details-btn btn btn-outline btn-primary">Buy Now</button>
+                    <button class="btn btn-outline btn-primary"><i
+                    class="fa-solid fa-cart-arrow-down"></i>Add</button>
+                </div>
+            </div >
+        </div >
+    `;
+    modal.showModal();
+};
