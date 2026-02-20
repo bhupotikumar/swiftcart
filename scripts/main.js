@@ -56,6 +56,7 @@ const displayCategories = (categories) => {
 };
 loadCategories();
 
+// Function to load products by category and display them
 const loadProductsByCategory = (category) => {
     const categoryBtns = document.querySelectorAll('.category-btn');
 
@@ -107,3 +108,42 @@ const displayProducts = (products) => {
     });
 }
 loadProductsByCategory('all');
+
+const loadTrendingProducts = () => {
+    fetch('https://fakestoreapi.com/products?limit=4')
+        .then(res => res.json())
+        .then(data => displayTrendingProducts(data));
+}
+const displayTrendingProducts = (products) => {
+    const trendingContainer = document.getElementById('trending-container');
+    if (!trendingContainer) return;
+    trendingContainer.innerHTML = '';
+    const topProducts = [...products].sort((a, b) => b.rating.rate - a.rating.rate).slice(0, 4);
+
+    topProducts.forEach(product => {
+        const productElement = document.createElement('div');
+        productElement.innerHTML = `
+            <div class="card bg-base-100 w-full shadow-lg">
+                <figure class="h-64 w-full p-4 bg-gray-300">
+                    <img class="h-full w-full object-contain" src="${product.image}" alt="${product.title}" />
+                </figure>
+                <div class="card-body p-2">
+                    <div class="flex justify-between my-4">
+                        <div class="badge text-indigo-600 bg-indigo-100 truncate">${product.category}</div>
+                        <div class="flex items-center gap-2"><i class="fa-solid fa-star text-yellow-500"></i><span>${product.rating.rate} (${product.rating.count})</span></div>
+                    </div>
+                    <h2 class="text-xl font-semibold truncate">
+                        ${product.title}
+                    </h2>
+                    <p class="text-xl font-bold">$${product.price}</p>
+                    <div class="card-actions justify-between">
+                        <button class="btn btn-outline btn-primary"><i class="fa-regular fa-eye"></i>Details</button>
+                        <button class="btn btn-outline btn-primary"><i
+                                class="fa-solid fa-cart-arrow-down"></i>Add</button>
+                    </div>
+                </div>
+            </div>`;
+        trendingContainer.appendChild(productElement);
+    });
+}
+loadTrendingProducts();
