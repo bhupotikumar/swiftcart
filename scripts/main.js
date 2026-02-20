@@ -20,12 +20,13 @@ const loadCategories = () => {
 }
 const displayCategories = (categories) => {
     const categoriesContainer = document.getElementById('categories');
+    if (!categoriesContainer) return;
     categories.forEach(category => {
         const button = document.createElement('button');
-
         button.textContent = category;
-        button.className = "btn btn-outline btn-primary capitalize text-gray-600 font-semibold rounded-full hover:text-white";
+        button.className = "category-btn btn btn-outline capitalize font-semibold rounded-full";
 
+        button.dataset.category = category;
         button.addEventListener('click', () => {
             loadProductsByCategory(category);
         });
@@ -35,19 +36,29 @@ const displayCategories = (categories) => {
 };
 loadCategories();
 
-// Function to load products from API and display them
-const loadProducts = () => {
-    fetch('https://fakestoreapi.com/products')
-        .then(res => res.json())
-        .then(products => displayProducts(products))
-}
 const loadProductsByCategory = (category) => {
-    fetch(`https://fakestoreapi.com/products/category/${encodeURIComponent(category)}`)
+    const categoryBtns = document.querySelectorAll('.category-btn');
+
+    categoryBtns.forEach(btn => btn.classList.remove('btn-primary'));
+    categoryBtns.forEach(btn => btn.classList.add('btn-outline'));
+
+    const button = Array.from(categoryBtns).find(btn => btn.dataset.category === category);
+    if (button) {
+        button.classList.add('btn-primary');
+        button.classList.remove('btn-outline');
+    }
+
+    let url = category === 'all'
+        ? 'https://fakestoreapi.com/products'
+        : `https://fakestoreapi.com/products/category/${encodeURIComponent(category)}`;
+
+    fetch(url)
         .then(res => res.json())
         .then(data => displayProducts(data));
 };
 const displayProducts = (products) => {
     const productsContainer = document.getElementById('products-container');
+    if (!productsContainer) return;
     productsContainer.innerHTML = '';
     products.map(product => {
         const productElement = document.createElement('div');
@@ -58,7 +69,7 @@ const displayProducts = (products) => {
                 </figure>
                 <div class="card-body p-2">
                     <div class="flex justify-between my-4">
-                        <div class="badge text-blue-900 bg-blue-100 truncate">${product.category}</div>
+                        <div class="badge text-indigo-600 bg-indigo-100 truncate">${product.category}</div>
                         <div class="flex items-center gap-2"><i class="fa-solid fa-star text-yellow-500"></i><span>${product.rating.rate} (${product.rating.count})</span></div>
                     </div>
                     <h2 class="text-xl font-semibold truncate">
@@ -75,4 +86,4 @@ const displayProducts = (products) => {
         productsContainer.appendChild(productElement);
     });
 }
-loadProducts();
+loadProductsByCategory('all');
