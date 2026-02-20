@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./Assets/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="./styles/style.css">
+    <title>Products | SwiftCart E-Commerce</title>
+    <!-- Tailwind css -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Daisy UI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <!-- Header section -->
+    <header id="header"></header>
+    <main class="w-11/12 mx-auto my-10">
+        <h1 class="text-4xl font-bold text-center mb-6">Our Products</h1>
+        <div id="categories" class="flex flex-wrap justify-center items-center gap-4 my-6">
+            <div class="">
+                <button
+                    class="btn btn-outline btn-primary text-gray-600 font-semibold rounded-full hover:text-white" onclick="loadProducts()">All</button>
+            </div>
+            <!-- Categories here -->
+        </div>
+        <div id="products-container" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Product cards here -->
+        </div>
+    </main>
+    <footer id="footer"></footer>
+    <script src="../scripts/main.js"></script>
+</body>
+
+</html>
