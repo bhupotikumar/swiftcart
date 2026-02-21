@@ -23,31 +23,31 @@
     <!-- Header section -->
     <header id="header" class="fixed top-0 w-full bg-base-100 z-50"></header>
     <main class="w-11/12 mx-auto my-10 mt-16">
-        <h1 class="text-4xl font-bold text-center mb-6">Our Products</h1>
-        <div id="categories" class="flex flex-wrap justify-center items-center gap-4 my-6">
+        <h1 class="text-2xl md:text-4xl font-bold text-center mb-6">Our Products</h1>
+        <div id="categories" class="flex flex-wrap justify-center items-center gap-1 md:gap-3 lg:gap-4 my-4 md:my-6">
             <div class="">
-                <button class="category-btn btn btn-outline font-semibold rounded-full" data-category="all"
+                <button class="category-btn btn-sm md:btn-md btn btn-outline md:font-semibold rounded-full" data-category="all"
                     onclick="loadProductsByCategory('all')">All</button>
             </div>
             <!-- Categories here -->
         </div>
         <span
             class="hidden loading loading-spinner loading-xl p-6 m-6 flex justify-center items-center max-w-12 mx-auto"></span>
-        <div id="products-container" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div id="products-container" class="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <!-- Product cards here -->
         </div>
         <dialog id="my_modal_3" class="modal">
-            <div class="modal-box">
+            <div class="modal-box w-8/12">
                 <form method="dialog">
                     <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                 </form>
-                <div id="modal-content" class="p-4">
+                <div id="modal-content" class="p-1 md:p-2 lg:p-4">
                     <!-- Dynamic product info will be injected here -->
                 </div>
             </div>
         </dialog>
     </main>
-    <footer id="footer"></footer>
+    <footer id="footer" class="overflow-hidden"></footer>
     <script src="../scripts/main.js"></script>
 </body>
 

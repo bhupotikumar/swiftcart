@@ -59,7 +59,7 @@ const displayCategories = (categories) => {
     categories.forEach(category => {
         const button = document.createElement('button');
         button.textContent = category;
-        button.className = "category-btn btn btn-outline capitalize font-semibold rounded-full";
+        button.className = "category-btn btn-sm md:btn-md btn btn-outline capitalize font-semibold rounded-full";
 
         button.dataset.category = category;
         button.addEventListener('click', () => {
@@ -199,23 +199,23 @@ const showProductDetails = (product) => {
     const modal = document.getElementById('my_modal_3');
     const modalContent = document.getElementById('modal-content');
     modalContent.innerHTML = `
-        <div class="card bg-base-100 w-full shadow-lg">
-            <figure class="h-64 w-full p-4 bg-gray-300">
+        <div class="card bg-base-100 shadow-lg">
+            <figure class="h-44 md:h-56 lg:h-64 w-full p-2 bg-gray-300">
                 <img class="h-full w-full object-contain" src="${product.image}" alt="${product.title}" />
             </figure>
-            <div class="card-body p-2">
-                <div class="flex justify-between my-4">
-                    <div class="badge text-indigo-600 bg-indigo-100">${product.category}</div>
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-star text-yellow-500"></i><span>${product.rating.rate} (${product.rating.count})</span></div>
+            <div class="card-body p-1 md:p-2">
+                <div class="flex justify-between my-2 lg:my-4">
+                    <div class="badge text-xs md:text-base text-indigo-600 bg-indigo-100">${product.category}</div>
+                    <div class="flex items-center md:gap-2"><i class="fa-solid fa-star text-yellow-500 text-xs md:text-sm lg:text-lg"></i><span class="text-xs md:text-sm">${product.rating.rate} (${product.rating.count})</span></div>
                 </div>
-                <h2 class="text-xl font-semibold">
+                <h2 class="text-sm md:text-xl font-semibold">
                     ${product.title}
                 </h2>
-                <p class="text-xl font-bold">$${product.price}</p>
+                <p class="text-lg md:text-xl font-bold">$${product.price}</p>
                 <div class="card-actions justify-between">
                     <button
-                    class="details-btn btn btn-outline btn-primary">Buy Now</button>
-                    <button class="add-btn btn btn-outline btn-primary"><i
+                    class="details-btn btn btn-outline btn-primary btn-xs md:btn-sm lg:btn-md">Buy Now</button>
+                    <button class="add-btn btn btn-outline btn-primary btn-xs md:btn-sm lg:btn-md"><i
                     class="fa-solid fa-cart-arrow-down"></i>Add</button>
                 </div>
             </div >
