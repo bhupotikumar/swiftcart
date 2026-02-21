@@ -1,30 +1,24 @@
-## 🛍️ API Endpoints
+## 🛍️ SwiftCart E-commerce
 ---
-1. Get 🛍️ All Products
+1.  What is the difference between `null` and `undefined`?
 ```bash
-https://fakestoreapi.com/products
+undefined মানে variable declare করা হয়েছে কিন্তু তাতে কোনো value assign করা হয়নি আর null মানে ইচ্ছা করে value empty করে দেওয়া হয়েছে ।
 ```
 
-2. Get 🛍️ All Categories
+2. What is the use of the `map()` function in JavaScript? How is it different from `forEach()`?
 ```bash
-https://fakestoreapi.com/products/categories
+map() ব্যবহার করা হয় array এর প্রতিটা element থেকে নতুন array বানানোর জন্য। forEach() শুধু loop চালায়, কিন্তু নতুন কিছু return করে না।
 ```
 
-3. Get 🛍️ Products by Category
+3. What is the difference between `==` and `===`?
 ```bash
-https://fakestoreapi.com/products/category/${category}
+`==` শুধু value compare করে type check করে না কিন্তু `===` value ও type দুইটাই compare করে ।
 ```
-
-Example:
+4. What is the significance of `async`/`await` in fetching API data?
 ```bash
-https://fakestoreapi.com/products/category/jewelery
+যখন আমরা API থেকে data fetch করি, তখন সময় লাগে (asynchronous process)। async/await ব্যবহার করলে code দেখতে synchronous এর মতো লাগে, কিন্তু কাজ করে asynchronous ভাবে ।
 ```
-
-4. Get 🛍️ Single Product Detail
+5. Explain the concept of Scope in JavaScript (Global, Function, Block).
 ```bash
-https://fakestoreapi.com/products/${id}
+Scope মানে কোন variable কোথায় access করা যাবে। Function এর ভিতরে declare করলে বাইরে থেকে access করা যায় না। let এবং const block {} এর ভিতরে সীমাবদ্ধ থাকে।
 ```
-
-Example:
-```bash
-https://fakestoreapi.com/products/1
