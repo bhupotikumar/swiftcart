@@ -21,8 +21,8 @@
 
 <body>
     <!-- Header section -->
-    <header id="header"></header>
-    <main class="w-11/12 mx-auto my-10">
+    <header id="header" class="fixed top-0 w-full bg-base-100 z-50"></header>
+    <main class="w-11/12 mx-auto my-10 mt-16">
         <h1 class="text-4xl font-bold text-center mb-6">Our Products</h1>
         <div id="categories" class="flex flex-wrap justify-center items-center gap-4 my-6">
             <div class="">
@@ -31,7 +31,8 @@
             </div>
             <!-- Categories here -->
         </div>
-        <span class="hidden loading loading-spinner loading-xl p-6 m-6 flex justify-center items-center max-w-12 mx-auto"></span>
+        <span
+            class="hidden loading loading-spinner loading-xl p-6 m-6 flex justify-center items-center max-w-12 mx-auto"></span>
         <div id="products-container" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
             <!-- Product cards here -->
         </div>

@@ -11,6 +11,7 @@ const loadHTML = (id, url) => {
 // Load header and footer
 loadHTML("header", "../components/header.html").then(() => {
     setActiveNav();
+    displayCartItems();
 });
 loadHTML("footer", "../components/footer.html");
 
@@ -108,6 +109,7 @@ const loadProductsByCategory = (category) => {
 };
 const displayProducts = (products) => {
     const productsContainer = document.getElementById('products-container');
+    const cartContainer = document.getElementById('cart-container');
     if (!productsContainer) return;
     productsContainer.innerHTML = '';
 
@@ -131,13 +133,16 @@ const displayProducts = (products) => {
                         <button 
                         class="details-btn btn btn-outline btn-primary"
                         ><i class="fa-regular fa-eye"></i>Details</button>
-                        <button class="btn btn-outline btn-primary"><i
+                        <button class="add-btn btn btn-outline btn-primary"><i
                                 class="fa-solid fa-cart-arrow-down"></i>Add</button>
                     </div>
                 </div>
             </div>`;
         productElement.querySelector('.details-btn').addEventListener('click', () => {
             showProductDetails(product);
+        });
+        productElement.querySelector('.add-btn').addEventListener('click', () => {
+            addToCart(product);
         });
         productsContainer.appendChild(productElement);
     });
@@ -217,4 +222,62 @@ const showProductDetails = (product) => {
         </div >
     `;
     modal.showModal();
+};
+
+// Add to cart functionality
+const addToCart = (product) => {
+    const cartContainer = document.getElementById('cart-container');
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const existingProduct = cart.find(item => item.id === product.id);
+    if (existingProduct) {
+        existingProduct.quantity += 1;
+    } else {
+        cart.push({ ...product, quantity: 1 });
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(`${product.title} added to cart!`);
+    displayCartItems();
+}
+const displayCartItems = () => {
+    const cartContainer = document.getElementById('cart-container');
+    const cartCount = document.getElementById('cart-count');
+    if (!cartContainer || !cartCount) return;
+
+    cartContainer.innerHTML = '';
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let totalItems = 0;
+    let totalPrice = 0;
+
+    cart.forEach(product => {
+        totalItems += product.quantity;
+        totalPrice += product.price * product.quantity;
+
+        const cartItem = document.createElement('div');
+        cartItem.innerHTML = `
+            <div class="flex items-center gap-4 p-2 border-b">
+                <img class="h-16 w-16 object-contain" src="${product.image}" />
+                <div>
+                    <h3 class="font-semibold">${product.title}</h3>
+                    <p class="text-sm">$${product.price} x ${product.quantity}</p>
+                </div>
+                <button class="ml-auto hover:text-red-700 remove-btn" data-id="${product.id}"><i class="fa-solid fa-trash"></i></button>
+            </div>
+        `;
+
+        cartContainer.appendChild(cartItem);
+    });
+
+    if (cart.length > 0) {
+        const cartCalc = document.createElement('div');
+        cartCalc.innerHTML = `
+            <div class="p-2 border-t mt-2">
+                <p class="text-sm font-semibold">Total: $${totalPrice.toFixed(2)}</p>
+                <button class="btn btn-primary w-full mt-2">Checkout</button>
+            </div>
+        `;
+        cartContainer.appendChild(cartCalc);
+    }
+
+    cartCount.textContent = totalItems;
 };
