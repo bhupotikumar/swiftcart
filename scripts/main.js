@@ -238,6 +238,7 @@ const addToCart = (product) => {
     alert(`${product.title} added to cart!`);
     displayCartItems();
 }
+
 const displayCartItems = () => {
     const cartContainer = document.getElementById('cart-container');
     const cartCount = document.getElementById('cart-count');
@@ -261,10 +262,9 @@ const displayCartItems = () => {
                     <h3 class="font-semibold">${product.title}</h3>
                     <p class="text-sm">$${product.price} x ${product.quantity}</p>
                 </div>
-                <button class="ml-auto hover:text-red-700 remove-btn" data-id="${product.id}"><i class="fa-solid fa-trash"></i></button>
+                <button type="button" class="ml-auto hover:text-red-700 remove-btn" data-id="${product.id}"><i class="fa-solid fa-trash"></i></button>
             </div>
         `;
-
         cartContainer.appendChild(cartItem);
     });
 
@@ -278,6 +278,27 @@ const displayCartItems = () => {
         `;
         cartContainer.appendChild(cartCalc);
     }
+    else {
+        const emptyMessage = document.createElement('p');
+        emptyMessage.className = "empty-cart text-sm text-gray-400 text-center";
+        emptyMessage.textContent = "Your cart is empty.";
+        cartContainer.appendChild(emptyMessage);
+    }
 
     cartCount.textContent = totalItems;
-};
+    // Remove button event
+    cartContainer.addEventListener("click", (e) => {
+        const removeBtn = e.target.closest(".remove-btn");
+        if (!removeBtn) return;
+
+        const id = Number(removeBtn.dataset.id);
+
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        cart = cart.filter(item => item.id !== id);
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        displayCartItems();
+    });
+}
