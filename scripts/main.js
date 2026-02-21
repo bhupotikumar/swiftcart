@@ -34,10 +34,24 @@ const setActiveNav = () => {
 
 // Function to load categories from API and display them
 const loadCategories = () => {
+    const loader = document.querySelector('.loading');
+    const categoriesContainer = document.getElementById('categories');
+    if (!loader || !categoriesContainer) return;
+    loader.classList.remove('hidden');
+    categoriesContainer.classList.add('hidden');
     fetch('https://fakestoreapi.com/products/categories')
         .then(res => res.json())
-        .then(categories => displayCategories(categories))
-}
+        .then(categories => {
+            displayCategories(categories)
+            loader.classList.add('hidden');
+            categoriesContainer.classList.remove('hidden');
+        })
+        .catch(err => {
+            console.error('Error loading categories:', err);
+            loader.classList.add('hidden');
+            categoriesContainer.classList.remove('hidden');
+        });
+};
 const displayCategories = (categories) => {
     const categoriesContainer = document.getElementById('categories');
     if (!categoriesContainer) return;
@@ -58,7 +72,13 @@ loadCategories();
 
 // Function to load products by category and display them
 const loadProductsByCategory = (category) => {
+    const loader = document.querySelector('.loading');
+    const productsContainer = document.getElementById('products-container');
     const categoryBtns = document.querySelectorAll('.category-btn');
+    if (!loader || !productsContainer) return;
+    loader.classList.remove('hidden');
+    productsContainer.classList.add('hidden');
+
 
     categoryBtns.forEach(btn => btn.classList.remove('btn-primary'));
     categoryBtns.forEach(btn => btn.classList.add('btn-outline'));
@@ -75,7 +95,16 @@ const loadProductsByCategory = (category) => {
 
     fetch(url)
         .then(res => res.json())
-        .then(data => displayProducts(data));
+        .then(data => {
+            displayProducts(data);
+            loader.classList.add('hidden');
+            productsContainer.classList.remove('hidden');
+        })
+        .catch(err => {
+            console.error(`Error loading products for category ${category}:`, err);
+            loader.classList.add('hidden');
+            productsContainer.classList.remove('hidden');
+        });
 };
 const displayProducts = (products) => {
     const productsContainer = document.getElementById('products-container');
@@ -123,7 +152,8 @@ const loadTrendingProducts = () => {
 const displayTrendingProducts = (products) => {
     const trendingContainer = document.getElementById('trending-container');
     if (!trendingContainer) return;
-    trendingContainer.innerHTML = '';
+    const skeleton = document.getElementById('card-skeleton');
+    if (skeleton) skeleton.classList.add('hidden');
     const topProducts = [...products].sort((a, b) => b.rating.rate - a.rating.rate).slice(0, 4);
 
     topProducts.forEach(product => {
