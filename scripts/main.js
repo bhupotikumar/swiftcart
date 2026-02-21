@@ -215,12 +215,15 @@ const showProductDetails = (product) => {
                 <div class="card-actions justify-between">
                     <button
                     class="details-btn btn btn-outline btn-primary">Buy Now</button>
-                    <button class="btn btn-outline btn-primary"><i
+                    <button class="add-btn btn btn-outline btn-primary"><i
                     class="fa-solid fa-cart-arrow-down"></i>Add</button>
                 </div>
             </div >
         </div >
     `;
+    modalContent.querySelector('.add-btn').addEventListener('click', () => {
+        addToCart(product);
+    });
     modal.showModal();
 };
 
