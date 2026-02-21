@@ -179,14 +179,17 @@ const displayTrendingProducts = (products) => {
                     <p class="text-xl font-bold">$${product.price}</p>
                     <div class="card-actions justify-between">
                         <button 
-                        class="details-btn btn btn-outline btn-primary"><i class="fa-regular fa-eye"></i>Details</button>
-                        <button class="btn btn-outline btn-primary"><i
+                        class="details-btn btn btn-outline btn-primary btn-xs md:btn-sm lg:btn-md"><i class="fa-regular fa-eye"></i>Details</button>
+                        <button class="add-btn btn btn-outline btn-primary btn-xs md:btn-sm lg:btn-md"><i
                                 class="fa-solid fa-cart-arrow-down"></i>Add</button>
                     </div>
                 </div>
             </div>`;
         productElement.querySelector('.details-btn').addEventListener('click', () => {
             showProductDetails(product);
+        });
+        productElement.querySelector('.add-btn').addEventListener('click', () => {
+            addToCart(product);
         });
         trendingContainer.appendChild(productElement);
     });
