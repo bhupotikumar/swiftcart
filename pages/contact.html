@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../Assets/banner-image.png" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/style.css">
+    <title>Contact || SwiftCart E-Commerce</title>
+    <!-- Tailwind css -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Daisy UI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <!-- Header section -->
+    <header id="header" class="fixed top-0 w-full bg-base-100 z-50"></header>
+
+    <main class="mt-16">
+        <section class="w-11/12 mx-auto my-8">
+            <h1 class="text-4xl font-bold text-center mb-4">Contact Us</h1>
+            <p class="text-center w-11/12 md:w-1/2 mx-auto">Have questions or need assistance? Our customer support team is here to help you. You can reach us through the following channels:</p>
+            <ul class="list-disc list-inside text-center mt-4">
+                <li>Email:
+                    <a href="mailto:support@swiftcart.com" class="text-indigo-600 hover:underline">support@swiftcart.com</a>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <div class="w-11/12 mx-auto my-8">
+                <h2 class="text-2xl md:text-4xl font-bold text-center mb-4">Customer Support</h2>
+                <p class="text-center w-11/12 md:w-1/2 mx-auto">Our dedicated customer support team is available 24/7 to assist you with any inquiries, order issues, or product information. We strive to provide prompt and helpful responses to ensure your satisfaction.</p>
+            </div>
+        </section>
+        <!-- Trending section -->
+        <section class="w-11/12 mx-auto my-8">
+            <h2 class="text-4xl font-bold my-4">Trending Now</h2>
+
+            <!-- skeleton -->
+            <div id="card-skeleton" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="flex w-52 flex-col gap-4">
+                    <div class="skeleton h-32 w-full"></div>
+                    <div class="skeleton h-4 w-28"></div>
+                    <div class="skeleton h-4 w-full"></div>
+                    <div class="skeleton h-4 w-full"></div>
+                </div>
+                <div class="flex w-52 flex-col gap-4">
+                    <div class="skeleton h-32 w-full"></div>
+                    <div class="skeleton h-4 w-28"></div>
+                    <div class="skeleton h-4 w-full"></div>
+                    <div class="skeleton h-4 w-full"></div>
+                </div>
+                <div class="flex w-52 flex-col gap-4">
+                    <div class="skeleton h-32 w-full"></div>
+                    <div class="skeleton h-4 w-28"></div>
+                    <div class="skeleton h-4 w-full"></div>
+                    <div class="skeleton h-4 w-full"></div>
+                </div>
+                <div class="flex w-52 flex-col gap-4">
+                    <div class="skeleton h-32 w-full"></div>
+                    <div class="skeleton h-4 w-28"></div>
+                    <div class="skeleton h-4 w-full"></div>
+                    <div class="skeleton h-4 w-full"></div>
+                </div>
+            </div>
+            <div id="trending-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Trending products will be loaded here -->
+
+            </div>
+            <!-- Modal -->
+            <dialog id="my_modal_3" class="modal">
+                <div class="modal-box">
+                    <form method="dialog">
+                        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                    </form>
+                    <div id="modal-content" class="p-4">
+                        <!-- Dynamic product info will be injected here -->
+                    </div>
+                </div>
+            </dialog>
+        </section>
+    </main>
+
+    <footer id="footer" class="overflow-hidden"></footer>
+
+    <!-- Scripts -->
+    <script src="../scripts/main.js"></script>
+</body>
+
+</html>
+
+
+<!-- You can open the modal using ID.showModal() method -->

@@ -131,7 +131,7 @@ const displayProducts = (products) => {
                     <p class="text-xl font-bold">$${product.price}</p>
                     <div class="card-actions justify-between">
                         <button 
-                        class="details-btn btn btn-outline btn-primary"
+                        class="details-btn btn-xs md:btn-sm lg:btn-md btn btn-outline btn-primary"
                         ><i class="fa-regular fa-eye"></i>Details</button>
                         <button class="add-btn btn btn-outline btn-primary"><i
                                 class="fa-solid fa-cart-arrow-down"></i>Add</button>
