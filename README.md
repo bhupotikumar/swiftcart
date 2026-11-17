@@ -1,24 +1,40 @@
-## 🛍️ SwiftCart E-commerce
+<!-- Replace with your project banner or leave clean -->
+<h1 align="center">
+  SwiftCart- an ecommerce platform
+</h1>
+
+<p align="center">
+  <b>This is a practice project where I practice JS for real problem solving.</b>
+</p>
 ---
-1.  What is the difference between `null` and `undefined`?
-```bash
-undefined মানে variable declare করা হয়েছে কিন্তু তাতে কোনো value assign করা হয়নি আর null মানে ইচ্ছা করে value empty করে দেওয়া হয়েছে ।
-```
 
-2. What is the use of the `map()` function in JavaScript? How is it different from `forEach()`?
-```bash
-map() ব্যবহার করা হয় array এর প্রতিটা element থেকে নতুন array বানানোর জন্য। forEach() শুধু loop চালায়, কিন্তু নতুন কিছু return করে না।
-```
+## ✨ Overview
 
-3. What is the difference between `==` and `===`?
-```bash
-`==` শুধু value compare করে type check করে না কিন্তু `===` value ও type দুইটাই compare করে ।
-```
-4. What is the significance of `async`/`await` in fetching API data?
-```bash
-যখন আমরা API থেকে data fetch করি, তখন সময় লাগে (asynchronous process)। async/await ব্যবহার করলে code দেখতে synchronous এর মতো লাগে, কিন্তু কাজ করে asynchronous ভাবে ।
-```
-5. Explain the concept of Scope in JavaScript (Global, Function, Block).
-```bash
-Scope মানে কোন variable কোথায় access করা যাবে। Function এর ভিতরে declare করলে বাইরে থেকে access করা যায় না। let এবং const block {} এর ভিতরে সীমাবদ্ধ থাকে।
-```
+SwiftCart- is a high-performance, lightweight tool designed to streamline with zero configuration required. 
+
+---
+
+## 🖼️ Demo / Screenshots
+
+<div align="center">
+  <img src="./assets/demo.png" width="100%" alt="Project Demo" />
+</div>
+
+*Not available for now.*
+
+---
+
+## 🚀 Key Features
+
+* **Lightning Fast:** Optimized for peak performance and minimal resource overhead.
+* **Clean Code:** Built using clean patterns.
+* **Easy Integration:** Drop-in ready for existing pipelines or codebases.
+
+---
+
+## 🧰 Tech Stack
+
+List the primary technologies, frameworks, or libraries powering this project:
+
+* **Core:** JavaScript
+* **Styling/UI:** CSS and Tailwind
